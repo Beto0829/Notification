@@ -19,6 +19,6 @@ public class EmailCreateHandler : IRequestHandler<EmailCreateCommand, string>
         _ = request ?? throw new ArgumentNullException(nameof(request), 
             "request object needed to handle this task");
         await _emailServices.EnviarEmail(_mapper.Map<Email>(request));   
-        return "El correo fue enviado con exito";
+        return "El correo fue enviado de manera exitosa";
     }
 }
