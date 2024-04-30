@@ -18,10 +18,20 @@ public static class Startup
         services.AddSwaggers();
         services.AddEndpointsApiExplorer();
         services.AddSettingdServices(config);
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowSpecificOrigin", builder =>
+            {
+                builder.WithOrigins("http://localhost:5173") // Reemplaza con tu origen permitido
+                       .AllowAnyHeader()
+                       .AllowAnyMethod();
+            });
+        });
     }
 
     public static void UseInfrastructure(this IApplicationBuilder app, IWebHostEnvironment env)
     {
+        app.UseCors("AllowSpecificOrigin");
         app.UseSwaggers(env);
         app.UseExceptionMiddleware();
         app.UseHttpsRedirection();

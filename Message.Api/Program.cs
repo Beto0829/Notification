@@ -17,6 +17,14 @@ builder.Services.AddSerializer();
 var app = builder.Build();
 app.UseInfrastructure(app.Environment);
 
+// Configuración de CORS
+//app.UseCors(builder =>
+//{
+//    builder.AllowAnyOrigin()
+//           .AllowAnyHeader()
+//           .AllowAnyMethod();
+//});
+
 //var subscribe = app.Services.GetRequiredService<IMessageConsumer<IntegrationMessage>>();
 //await subscribe.StartAsync();
 
