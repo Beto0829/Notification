@@ -22,9 +22,9 @@ public static class Startup
         {
             options.AddPolicy("AllowSpecificOrigin", builder =>
             {
-                builder.WithOrigins("http://localhost:5173") // Reemplaza con tu origen permitido
-                       .AllowAnyHeader()
-                       .AllowAnyMethod();
+                builder.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
             });
         });
     }
